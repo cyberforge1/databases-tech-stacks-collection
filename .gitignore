@@ -1,1 +1,25 @@
 .env
+
+venv
+
+
+# Terraform state files (contain sensitive info)
+terraform.tfstate
+terraform.tfstate.*
+
+# Terraform variables files (may contain sensitive data)
+*.tfvars
+
+# Terraform directories and lock files
+.terraform/
+.terraform.lock.hcl
+
+# Terraform plan files
+*.tfplan
+
+# Log and temporary files
+*.log
+*.tmp
+
+# Ignore utils/cidr.txt
+scripts/utils/cidr.txt

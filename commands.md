@@ -8,6 +8,17 @@ source venv/bin/activate
 
 pip freeze > requirements.txt
 
+## Terraform
+
+terraform -chdir=terraform init
+
+terraform -chdir=terraform plan
+
+terraform -chdir=terraform apply
+
+terraform -chdir=terraform destroy
+
+
 
 
 # Local Database Creation
@@ -29,9 +40,10 @@ python scripts/local_db/local_db_delete_db.py
 
 (On hold)
 
-python scripts/docker/docker_db_create_db.py
-
-docker ps
-
 
 # AWS RDS Creation
+
+
+# Create CIDR
+
+python scripts/utils/create_cidr.py
