@@ -43,14 +43,19 @@ def execute_sql_file(connection, file_path):
             for command in sql_commands.split(';'):
                 if command.strip():
                     cursor.execute(command)
+                    # Consume all results to avoid "Unread result found"
+                    while cursor.nextset():
+                        pass
             connection.commit()
-            print(f"Successfully executed schema from {file_path}")
+            print(f"Successfully executed SQL file: {file_path}")
     except FileNotFoundError:
         print(f"Error: SQL file not found at {file_path}")
         sys.exit(1)
     except Error as e:
         print(f"Error while executing SQL file: {e}")
         sys.exit(1)
+    finally:
+        cursor.close()
 
 
 def create_schema():
@@ -63,7 +68,7 @@ def create_schema():
 
         if connection.is_connected():
             print("Connected to the local database instance.")
-            sql_file_path = os.path.join(os.path.dirname(__file__), '../../sql/schema.sql')
+            sql_file_path = os.path.join(os.path.dirname(__file__), '../../sql/local_database.sql')
             execute_sql_file(connection, sql_file_path)
 
     except Error as e:

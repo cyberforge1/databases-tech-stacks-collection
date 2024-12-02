@@ -27,5 +27,7 @@ python scripts/local_db/local_db_delete_db.py
 
 # Docker Database Creation
 
+python scripts/docker/docker_db_create_db.py
+
 
 # AWS RDS Creation

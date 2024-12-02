@@ -1,4 +1,4 @@
-# Connections
+# CONNECTIONS
 
 ## LOCAL COMPUTER
 

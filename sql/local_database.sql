@@ -1,4 +1,4 @@
--- sql/setup_tech_stack_collection_local.sql
+-- sql/local_database.sql
 
 -- Create the database
 CREATE DATABASE IF NOT EXISTS tech_stack_collection_local;
