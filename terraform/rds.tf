@@ -4,8 +4,17 @@ provider "aws" {
   region = var.AWS_REGION
 }
 
+resource "aws_db_subnet_group" "main" {
+  name       = "rds_subnet_group"
+  subnet_ids = [aws_subnet.main_subnet.id]
+
+  tags = {
+    Name = "rds_subnet_group"
+  }
+}
+
 resource "aws_db_instance" "rds_instance" {
-  identifier              = "tech_stacks_collection_aws_rds"
+  identifier              = "tech-stacks-collection-aws-rds"
   allocated_storage       = 20
   max_allocated_storage   = 20
   engine                  = "mysql"
@@ -19,10 +28,10 @@ resource "aws_db_instance" "rds_instance" {
   deletion_protection     = false
   backup_retention_period = 0
   vpc_security_group_ids  = [aws_security_group.rds_sg.id]
-  db_subnet_group_name    = aws_subnet.main_subnet.id
+  db_subnet_group_name    = aws_db_subnet_group.main.name
 
   tags = {
-    Name = "tech_stacks_collection_rds"
+    Name = "tech-stacks-collection-rds"
   }
 }
 

@@ -1,7 +1,11 @@
 # terraform/iam.tf
 
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
 resource "aws_iam_role" "rds_role" {
-  name = "rds_manager_role"
+  name = "rds_manager_role_${random_id.suffix.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -18,7 +22,7 @@ resource "aws_iam_role" "rds_role" {
 }
 
 resource "aws_iam_policy" "rds_policy" {
-  name   = "rds_manager_policy"
+  name   = "rds_manager_policy_${random_id.suffix.hex}"
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -43,6 +47,6 @@ resource "aws_iam_role_policy_attachment" "attach_rds_policy" {
   policy_arn = aws_iam_policy.rds_policy.arn
 }
 
-output "aws_account_id" {
-  value = var.AWS_ACCOUNT_ID
+output "iam_role_name" {
+  value = aws_iam_role.rds_role.name
 }

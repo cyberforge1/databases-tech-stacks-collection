@@ -22,7 +22,7 @@ resource "aws_security_group" "rds_sg" {
   }
 
   tags = {
-    Name = "tech_stacks_collection_rds_sg"
+    Name = "tech-stacks-collection-rds-sg"
   }
 }
 

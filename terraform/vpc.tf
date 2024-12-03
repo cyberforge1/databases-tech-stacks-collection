@@ -5,7 +5,7 @@ resource "aws_vpc" "main_vpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "tech_stacks_collection_vpc"
+    Name = "tech-stacks-collection-vpc"
   }
 }
 
@@ -15,14 +15,14 @@ resource "aws_subnet" "main_subnet" {
   availability_zone       = var.AWS_REGION_AZ
   map_public_ip_on_launch = true
   tags = {
-    Name = "tech_stacks_collection_subnet"
+    Name = "tech-stacks-collection-subnet"
   }
 }
 
 resource "aws_internet_gateway" "main_igw" {
   vpc_id = aws_vpc.main_vpc.id
   tags = {
-    Name = "tech_stacks_collection_igw"
+    Name = "tech-stacks-collection-igw"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_route_table" "main_route_table" {
     gateway_id = aws_internet_gateway.main_igw.id
   }
   tags = {
-    Name = "tech_stacks_collection_route_table"
+    Name = "tech-stacks-collection-route-table"
   }
 }
 
