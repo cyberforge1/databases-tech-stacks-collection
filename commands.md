@@ -43,9 +43,18 @@ python scripts/local_db/local_db_delete_db.py
 (On hold)
 
 
-# AWS RDS Creation
+# AWS RDS Python Scripts
+
+python scripts/aws_rds/aws_rds_connect.py
+
+python scripts/aws_rds/aws_rds_schema_creation_and_testing.py
+
+python scripts/aws_rds/aws_rds_schema_deletion_and_testing.py
+
+
 
 
 # Create CIDR
 
 python scripts/utils/create_cidr.py
+

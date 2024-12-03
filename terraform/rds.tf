@@ -6,7 +6,10 @@ provider "aws" {
 
 resource "aws_db_subnet_group" "main" {
   name       = "rds_subnet_group"
-  subnet_ids = [aws_subnet.main_subnet.id]
+  subnet_ids = [
+    aws_subnet.main_subnet.id,
+    aws_subnet.secondary_subnet.id
+  ]
 
   tags = {
     Name = "rds_subnet_group"

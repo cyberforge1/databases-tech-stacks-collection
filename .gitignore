@@ -23,3 +23,7 @@ terraform.tfstate.*
 
 # Ignore utils/cidr.txt
 scripts/utils/cidr.txt
+
+scripts/utils/test_connection.py
+
+scripts/utils/test_port.py

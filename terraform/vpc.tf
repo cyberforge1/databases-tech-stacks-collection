@@ -12,10 +12,20 @@ resource "aws_vpc" "main_vpc" {
 resource "aws_subnet" "main_subnet" {
   vpc_id                  = aws_vpc.main_vpc.id
   cidr_block              = "10.0.1.0/24"
-  availability_zone       = var.AWS_REGION_AZ
+  availability_zone       = "ap-southeast-2a"
   map_public_ip_on_launch = true
   tags = {
-    Name = "tech-stacks-collection-subnet"
+    Name = "tech-stacks-collection-main-subnet"
+  }
+}
+
+resource "aws_subnet" "secondary_subnet" {
+  vpc_id                  = aws_vpc.main_vpc.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "ap-southeast-2b"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "tech-stacks-collection-secondary-subnet"
   }
 }
 
@@ -48,4 +58,8 @@ output "vpc_id" {
 
 output "subnet_id" {
   value = aws_subnet.main_subnet.id
+}
+
+output "secondary_subnet_id" {
+  value = aws_subnet.secondary_subnet.id
 }
