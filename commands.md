@@ -37,6 +37,9 @@ python scripts/local_db/local_db_test_queries.py
 
 python scripts/local_db/local_db_delete_db.py
 
+python scripts/local_db/local_db_export_to_json.py
+
+
 
 # Docker Database Creation
 

@@ -2,17 +2,15 @@
 
 resource "aws_security_group" "rds_sg" {
   name        = "rds_security_group"
-  description = "Allow RDS access from a specific CIDR"
+  description = "Allow all inbound and outbound traffic"
   vpc_id      = aws_vpc.main_vpc.id
 
   ingress {
-    description      = "Allow MySQL access from specific CIDR"
-    from_port        = 3306
-    to_port          = 3306
-    protocol         = "tcp"
-    cidr_blocks      = [var.LOCAL_CIDR] # Use the LOCAL_CIDR variable for CIDR input
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["163.47.68.73/32"] # Your public IP
   }
-
   egress {
     description      = "Allow all outbound traffic"
     from_port        = 0
